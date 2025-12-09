@@ -29,7 +29,7 @@ Our aim is to help authorities **identify patterns**, reduce accidents, and impr
     """)
 with col2:
  
-    st.image("assets/detection.png", width=1000)
+    st.image("../Assets/image.png", width=1000)
 
 st.markdown("---")
 
