@@ -13,7 +13,7 @@ import core.map_plot as map_plot
 # ------------------------------
 st.set_page_config(
     page_title="Map Visualization - Smart Traffic Violation Pattern Detector Dashboard", 
-    page_icon="🗺️", 
+    page_icon="assets/logo.png", 
     layout="wide"
 )
 

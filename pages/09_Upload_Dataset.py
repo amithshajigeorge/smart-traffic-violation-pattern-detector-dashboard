@@ -11,7 +11,7 @@ from core.data_generator import generate_dataset_by_days
 # ------------------------------
 st.set_page_config(
     page_title="Datasets Management - Smart Traffic Violation Pattern Detector Dashboard", 
-    page_icon="📁", 
+    page_icon="assets/logo.png", 
     layout="wide"
 )
 

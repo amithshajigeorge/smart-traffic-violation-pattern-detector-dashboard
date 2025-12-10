@@ -10,7 +10,7 @@ from core import (
 # ------------------------------
 st.set_page_config(
     page_title="Dataset Summary - Smart Traffic Violation Pattern Detector Dashboard", 
-    page_icon="📝", 
+    page_icon="assets/logo.png", 
     layout="wide"
 )
 

@@ -12,9 +12,11 @@ from core import (
 # ==========================================================================================================    
 st.set_page_config(
     page_title="Smart Traffic Violation Dashboard",
-    page_icon="🚦",
+    page_icon="assets/logo.png",
     layout="wide",
 )
+
+st.logo("assets/logo2.png", size="large")
 
 def dashboard() -> None:
 # ==========================================================================================================    
@@ -203,7 +205,7 @@ def dashboard() -> None:
         mask_behavior = (df['Date'].dt.year >= selected_years_behavior[0]) & (df['Date'].dt.year <= selected_years_behavior[1])
         df_behavior = df[mask_behavior]
 
-        with st.expander(f"🧠 Advanced Risk Indicators ({selected_years_behavior[0]} - {selected_years_behavior[1]})", expanded=True):
+        with st.expander(f"Advanced Risk Indicators ({selected_years_behavior[0]} - {selected_years_behavior[1]})", expanded=True):
              behavior_metrics = dashboard_summary.get_behavioral_analysis(df_behavior)
              
              over_speeding_count, over_speeding_pct = behavior_metrics['over_speeding_stats']
@@ -218,7 +220,7 @@ def dashboard() -> None:
              with col1:
                  st.metric(
                      label="Over-Speeding Incidents",
-                     value=f"{over_speeding_count} ({over_speeding_pct:.1f}%)",
+                     value=f"{over_speeding_count}",
                      delta=f"{over_speeding_pct:.1f}% Rate",
                      delta_color="inner" if over_speeding_pct < 10 else "inverse",
                      help="Percentage of violations where recorded speed exceeded the limit."
@@ -234,7 +236,7 @@ def dashboard() -> None:
              with col3:
                  st.metric(
                      label="Court Appearance Required",
-                     value=f"{court_count} ({court_pct:.1f}%)",
+                     value=f"{court_count}",
                      delta=f"Prob: {court_pct:.1f}%",
                      delta_color="inverse",
                      help="Percentage of violations mandating a court appearance."
@@ -255,9 +257,9 @@ def dashboard() -> None:
                  )
              with col5:
                   st.metric(
-                     label=f"Most Frequent Weather: {top_weather_name}",
-                     value=f"{top_weather_count} ({top_weather_pct:.1f}%)",
-                     delta="Dominant Condition",
+                     label=f"Violation in Most Frequent Weather: {top_weather_name}",
+                     value=f"{top_weather_count}",
+                     delta=f"Prob: {top_weather_pct:.1f}%",
                      delta_color="off",
                      help=f"The weather condition under which the most violations ({top_weather_count}) occurred."
                  )
@@ -321,10 +323,11 @@ pages = [
     st.Page("pages/02_Visualize_Data.py", title="Data Visualization", icon="🎨", url_path='/data-visualization'),
     st.Page("pages/03_Trend_Analysis.py", title="Trends Analysis", icon="📈", url_path='/trends-analysis'),
     st.Page("pages/04_Map_Visualization.py", title="Map Visualization", icon="🗺️", url_path='/map-visualization'),
-    
 
     st.Page("pages/09_Upload_Dataset.py", title="Data Management", icon="📂", url_path='/data-management'),
     st.Page("pages/10_View_Dataset.py", title="View Dataset", icon="📝", url_path='/view-dataset/'),
+    st.Page("pages/05_Know_Your_Data.py", title="Know Your Data", icon="📊", url_path='/know-your-data'),
+    
     st.Page("pages/11_About_Page.py", title="About", icon="ℹ️", url_path='/about'),
 ]
 

@@ -9,7 +9,7 @@ import matplotlib.pyplot as plt
 # ------------------------------
 st.set_page_config(
     page_title="Trend Analysis - Smart Traffic Violation Pattern Detector Dashboard", 
-    page_icon="📈", 
+    page_icon="assets/logo.png", 
     layout="wide"
 )
 st.title("📈 Trend Analysis")

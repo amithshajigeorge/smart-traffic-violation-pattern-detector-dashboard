@@ -10,7 +10,7 @@ import seaborn as sns
 # ------------------------------
 st.set_page_config(
     page_title="Data Visualization - Smart Traffic Violation Pattern Detector Dashboard", 
-    page_icon="🎨", 
+    page_icon="assets/logo.png", 
     layout="wide"
 )
 

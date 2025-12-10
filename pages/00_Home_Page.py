@@ -3,7 +3,7 @@ import streamlit as st
 # Set page config
 st.set_page_config(
     page_title="Smart Traffic Violation Detector",
-    page_icon="🚦",
+    page_icon="assets/logo.png",
     layout="wide"
 )
 

@@ -8,7 +8,7 @@ from core import utils
 # ------------------------------
 st.set_page_config(
     page_title="Numerical Analysis - Smart Traffic Violation Pattern Detector Dashboard",
-    page_icon="🔢",
+    page_icon="assets/logo.png",
     layout="wide",
 )
 

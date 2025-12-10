@@ -59,9 +59,9 @@ def plot_violation_type_percentage_pie(df):
         autopct='%1.1f%%',
         colors=sns.color_palette('tab10'), # Deep colors
         wedgeprops={'edgecolor': 'black'},
-        pctdistance=0.85
+        pctdistance=0.85,
     )
-    plt.setp(autotexts, size=16, weight="bold") # standard size
+    plt.setp(autotexts, size=TICK_SIZE, weight="bold") # standard size
     ax.legend(
         wedges, 
         violation_counts.index,
@@ -157,7 +157,7 @@ def plot_violations_by_location(location_based_violations):
     )
     
     # 3. Handle Text Styling
-    plt.setp(autotexts, size=16, weight="bold")
+    plt.setp(autotexts, size=TICK_SIZE, weight="bold")
     
     # 4. Create a legend on the side to utilize the 16:9 width
     ax.legend(
