@@ -44,9 +44,16 @@ st.markdown("""
     
     /* List item styling */
     .feature-list {
-        font-size: 20px;
+        font-size: 16px;
         line-height: 1.8;
         color: var(--text-color);
+    }
+    .feature-list li {
+        margin-bottom: 8px;
+    }
+    .list-item-heading {
+        font-weight: 600;
+        font-size: 19px;
     }
 </style>
 """, unsafe_allow_html=True)
@@ -70,24 +77,51 @@ st.markdown(
 
 st.write("---")
 
+st.markdown("""
+    <h3>🔍 What This System Does</h3>
+    """,
+    unsafe_allow_html=True
+)
 # Image + Text Layout
-col1, col2 = st.columns([1, 1.2])
+col1, col2 = st.columns([1, 1.2], gap='small', border=True)
 
 with col1:
-    st.image("assets/vector-image-traffic.png", width=400)
+    st.image("assets/vector-image-traffic.png")
 
 with col2:
     st.markdown(
         """
         <div class="feature-list">
-        <h3>🔍 What This System Does</h3>
+        
         <ul>
-            <li>📊 <b>Violation analytics</b> based on type, time, location & weather</li>
-            <li>📅 <b>Time-series insights</b> by weekday, month & hour</li>
-            <li>🗺️ <b>Hotspot detection</b> to identify high-risk zones</li>
-            <li>🚗 <b>Vehicle & driver statistics</b></li>
-            <li>💳 <b>Fine distribution & payment behavior</b></li>
-            <li>⛈ <b>Weather impact on violation behavior</b></li>
+            <li>
+                📊 <b class="list-item-heading">Interactive Dashboard</b>
+                <br>User-friendly interface for exploring data & insights
+            </li>
+            <li>
+                🔢 <b class="list-item-heading">Numerical Analysis</b>
+                <br>Violation stats, fines, vehicle types & hourly patterns
+            </li>
+            <li>
+                🎨 <b class="list-item-heading">Data Visualization</b>
+                <br>Heatmaps, risk analysis, weather impact & custom charts
+            </li>
+            <li>
+                📈 <b class="list-item-heading">Trend Analysis</b>
+                <br>Peak traffic hours, yearly trends & driver risk profiling
+            </li>
+            <li>
+                🗺️ <b class="list-item-heading">Map Visualization</b>
+                <br>Geospatial hotspot detection & regional insights
+            </li>
+            <li>
+                📊 <b class="list-item-heading">Know Your Data</b>
+                <br>Automated dataset profiling & quality checks
+            </li>
+            <li>
+                ⬆️ <b class="list-item-heading">Manual Data Upload</b>
+                <br>Upload your own datasets for custom analysis
+            </li>
         </ul>
         </div>
         """,

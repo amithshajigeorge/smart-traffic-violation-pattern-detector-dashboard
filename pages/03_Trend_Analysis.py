@@ -261,11 +261,6 @@ def render_hardcoded_trend_plots(df):
             else:
                  st.info("No data to plot.")
 
-
-    # 2. Yearly Trend Section
-    render_single_trend_section(df_plot, 'Year', "Yearly Trend by Violation Type", "yearly", "Year")
-    st.markdown("---")
-
     # 1. Monthly Trend Section
     render_single_trend_section(df_plot, 'Month', "Monthly Trend by Violation Type", "monthly", "Month")
     st.markdown("---")
@@ -618,16 +613,6 @@ render_plot_item(
 #     "Ishwari", df, "ishwari_2_moved"
 # )
 # ===================== End of Removed Plot ===========================
-st.markdown("---")
-
-# 3. SEVERITY & RISK
-st.markdown('<h2 id="severity-risk-analysis" style="text-align: center;">Severity & Risk Analysis</h3>', unsafe_allow_html=True)
-render_plot_item(
-    "Driver Risk by Age Group", 
-    "This plot breaks down the calculated risk level for different driver age groups. It reveals which demographics are statistically more likely to engage in risky driving behaviors.",
-    trend_plot.plot_driver_risk_by_age,
-    "Saniya", df, "saniya_2_moved"
-)
 st.markdown("---")
 
 # 4. CUSTOM

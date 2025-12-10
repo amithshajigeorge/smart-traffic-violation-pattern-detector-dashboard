@@ -43,7 +43,7 @@ def clear_filters():
 # Filter columns present check (using existing logic)
 if set(data_variables.TRAFFIC_VIOLATION_COLUMNS).issubset(set(df.columns)):
     with st.expander("Filter Data"):
-        with st.form("dataset_filter_form"):
+        with st.form(key="dataset_filter_form"):
             
             # 1. Column Selection Expander
             with st.expander("📝 Select Columns", expanded=False):
@@ -98,5 +98,9 @@ if set(data_variables.TRAFFIC_VIOLATION_COLUMNS).issubset(set(df.columns)):
     st.write(f"## Search Results: `{df_filtered.shape[0]}` Records Found")
 else:
     st.error("Dataset does not contain required columns for advanced filtering.")
+
+# CRITICAL FIX: Ensure Violation_ID is string to prevent PyArrow serialization errors
+if 'Violation_ID' in df_filtered.columns:
+    df_filtered['Violation_ID'] = df_filtered['Violation_ID'].astype(str)
 
 st.data_editor(df_filtered, width='stretch')

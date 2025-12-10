@@ -230,45 +230,4 @@ def plot_avg_fine_location_line(df):
     plt.close()
     return fig
 
-def plot_driver_risk_by_age(df):
-    apply_trend_plot_style()
-    df = df.copy()
-    bins = [0, 25, 35, 45, 60, 100]
-    labels = ["18-25", "26-35", "36-45", "46-60", "60+"]
-    df["Age_Group"] = pd.cut(df["Driver_Age"], bins=bins, labels=labels, include_lowest=True)
-    
-    df['Alcohol_Flag'] = (df['Breathalyzer_Result'] == "Positive").astype(int)
-    df["Risk_Level"] = df["Previous_Violations"] + df["Alcohol_Flag"]
-
-    risk_by_age = df.groupby("Age_Group", observed=False)["Risk_Level"].mean().reset_index()
-    risk_by_age = risk_by_age.sort_values("Age_Group")
-
-    fig, ax = plt.subplots(figsize=TREND_FIG_SIZE)
-    
-    ax.plot(
-        risk_by_age["Age_Group"],
-        risk_by_age["Risk_Level"],
-        marker="o",
-        markersize=10,
-        linewidth=3,
-        color="#D43F6A" 
-    )
-    for i, row in risk_by_age.iterrows():
-        ax.text(
-            row["Age_Group"],
-            row["Risk_Level"] + 0.02,
-            f"{row['Risk_Level']:.2f}",
-            ha="center",
-            fontsize=TREND_TICK_SIZE,
-            weight="bold",
-            color="white" # Ensure explicit white for text on chart
-        )
-    ax.set_title("Average Driver Risk Level by Age Group", fontsize=TREND_TITLE_SIZE, fontweight='bold')
-    ax.set_xlabel("Age Group", fontsize=TREND_LABEL_SIZE, fontweight='bold')
-    ax.set_ylabel("Average Risk Level", fontsize=TREND_LABEL_SIZE, fontweight='bold')
-    plt.xticks(rotation=25, fontweight=TREND_TICK_WEIGHT)
-    plt.yticks(fontweight=TREND_TICK_WEIGHT)
-    plt.tight_layout()
-    plt.close()
-    return fig
 # ==================================================================================

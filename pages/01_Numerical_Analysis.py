@@ -178,6 +178,11 @@ with st.expander("Filters", expanded=True):
         df_filtered = df[(df['Date'].dt.date >= start_date) & (df['Date'].dt.date <= end_date)]
     else:
         df_filtered = df
+
+    # CRITICAL FIX: Ensure Violation_ID is string to prevent PyArrow serialization errors
+    if 'Violation_ID' in df_filtered.columns:
+        df_filtered['Violation_ID'] = df_filtered['Violation_ID'].astype(str)
+        
     st.write(f"### Showing data for `{df_filtered.shape[0]}`x`{df_filtered.shape[1]}` records based on the selected filters.")
 st.markdown("---")
 
@@ -206,8 +211,12 @@ with st.expander("Column Information", expanded=True):
     # Create a new dataframe for column information
     info_df = pd.DataFrame({
         'Field': df_filtered.columns,
-        'Data Type': df_filtered.dtypes.astype(str)
-    }).reset_index(drop=True)
+        'Data Type': [str(x) for x in df_filtered.dtypes]
+    })
+    # Explicitly ensure 'Data Type' is treated as string for Arrow
+    info_df['Data Type'] = info_df['Data Type'].astype(str)
+    
+    info_df = info_df.reset_index(drop=True)
 
     # Get the descriptive statistics & Merge the two dataframes
     desc_df = df_filtered.describe(include='all').transpose()
@@ -287,7 +296,7 @@ with st.expander("Day of Week vs Hour (Pivot)", expanded=True):
     if not hourly_pivot.empty:
         # highlighting max values for better readability in table form
         # use simple gradient for better readability
-        st.dataframe(hourly_pivot.style.background_gradient(axis=None, cmap='terrain'), width='stretch')
+        st.dataframe(hourly_pivot.style.background_gradient(axis=None, cmap='YlOrRd'), width='stretch')
     else:
         st.info("Time Series data unavailable.")
 

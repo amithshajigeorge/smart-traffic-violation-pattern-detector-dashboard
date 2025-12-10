@@ -45,12 +45,16 @@ if uploaded:
         )
         clean_df[col] = pd.to_numeric(clean_df[col], errors="ignore")
 
+    # Ensure numeric columns are actually numeric
     numeric_cols = clean_df.select_dtypes(include=["number"]).columns.tolist()
     categorical_cols = [c for c in df.columns if c not in numeric_cols]
 
+    # Explicitly cast Violation_ID to string to avoid PyArrow serialization errors
+    if 'Violation_ID' in df.columns:
+        df['Violation_ID'] = df['Violation_ID'].astype(str)
 
     st.subheader("Data Preview")
-    st.dataframe(df, width='stretch)
+    st.dataframe(df, width='stretch')
 
     # Identify numeric & categoric cols
     col1, col2 = st.columns(2)

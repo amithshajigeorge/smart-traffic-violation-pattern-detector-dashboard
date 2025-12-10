@@ -100,32 +100,6 @@ except Exception as e:
 
 st.markdown("---")
 
-# 2. Total Fines by Location
-st.markdown("<h2 style='text-align: center; '>Total Fines by Location</h3>", unsafe_allow_html=True)
-if 'Fine_Amount' in df.columns:
-    try:
-        # Slider for Fines
-        if min_year == max_year:
-            sel_years_fines = (min_year, max_year)
-        else:
-            sel_years_fines = st.slider("Filter by Year", min_year, max_year, (min_year, max_year), key="fines_slider")
-            
-        # Filter
-        mask_fines = (df['Date'].dt.year >= sel_years_fines[0]) & (df['Date'].dt.year <= sel_years_fines[1])
-        df_fines = df[mask_fines].copy()
-
-        # Ensure numeric
-        df_fines['Fine_Amount_Num'] = pd.to_numeric(df_fines['Fine_Amount'], errors='coerce').fillna(0)
-        map_data_fines = df_fines.groupby(default_loc_col)['Fine_Amount_Num'].sum().reset_index()
-        map_data_fines.columns = [default_loc_col, 'Total Fines']
-        render_choropleth_map_on_page(map_data_fines, geojson_data, default_loc_col, 'Total Fines', state_prop_name, color_theme="PuBuGn", title="Total Fines Generated")
-    except Exception as e:
-         st.error(f"Could not generate Total Fines map: {e}")
-else:
-    st.warning("Column 'Fine_Amount' not found. Skipping Total Fines map.")
-
-st.markdown("---")
-
 
 # ------------------------------
 # 3. Average Driver's Age by Location

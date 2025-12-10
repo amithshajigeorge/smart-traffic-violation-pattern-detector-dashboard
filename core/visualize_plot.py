@@ -522,17 +522,25 @@ def plot_age_alcohol_heatmap(df):
 def plot_fine_vs_vehicle_pie(df):
     apply_plot_style()
     fine_data = df.groupby('Vehicle_Type')['Fine_Amount'].sum()
-    fig = plt.figure(figsize=FIG_SIZE)
-    plt.pie(
+    fig, ax = plt.subplots(figsize=FIG_SIZE)
+    
+    wedges, texts, autotexts = ax.pie(
         fine_data.values,
         labels=fine_data.index,
         autopct='%1.1f%%',
         startangle=90,
+        pctdistance=0.85,  # Push percentage text outward suitable for donut
         colors=sns.color_palette("Set2"),
+        wedgeprops=dict(width=0.4, edgecolor='w'), # This creates the donut hole
         textprops={'fontsize': TICK_SIZE, 'weight': 'bold'}
     )
-    plt.title("Total Fines Paid by Vehicle Type")
-    plt.axis('equal')
+    
+    # Draw a circle at the center to ensure it looks like a donut (optional with wedgeprops width but good for customization)
+    # centre_circle = plt.Circle((0,0),0.70,fc='white')
+    # fig.gca().add_artist(centre_circle)
+    
+    ax.set_title("Total Fines Paid by Vehicle Type")
+    plt.axis('equal') 
     plt.close()
     return fig
 
@@ -601,3 +609,47 @@ def plot_violation_types_vs_weather_heatmap(df):
     plt.yticks(fontweight=TICK_WEIGHT)
     plt.tight_layout()
     return plt.gcf()
+
+
+
+def plot_driver_risk_by_age(df):
+    apply_plot_style()
+    df = df.copy()
+    bins = [0, 25, 35, 45, 60, 100]
+    labels = ["18-25", "26-35", "36-45", "46-60", "60+"]
+    df["Age_Group"] = pd.cut(df["Driver_Age"], bins=bins, labels=labels, include_lowest=True)
+    
+    df['Alcohol_Flag'] = (df['Breathalyzer_Result'] == "Positive").astype(int)
+    df["Risk_Level"] = df["Previous_Violations"] + df["Alcohol_Flag"]
+
+    risk_by_age = df.groupby("Age_Group", observed=False)["Risk_Level"].mean().reset_index()
+    risk_by_age = risk_by_age.sort_values("Age_Group")
+
+    fig, ax = plt.subplots(figsize=FIG_SIZE)
+    
+    ax.plot(
+        risk_by_age["Age_Group"],
+        risk_by_age["Risk_Level"],
+        marker="o",
+        markersize=10,
+        linewidth=3,
+        color="#D43F6A" 
+    )
+    for i, row in risk_by_age.iterrows():
+        ax.text(
+            row["Age_Group"],
+            row["Risk_Level"] + 0.02,
+            f"{row['Risk_Level']:.2f}",
+            ha="center",
+            fontsize=TICK_SIZE,
+            weight="bold",
+            color="white" # Ensure explicit white for text on chart
+        )
+    ax.set_title("Average Driver Risk Level by Age Group", fontsize=TICK_SIZE, fontweight='bold')
+    ax.set_xlabel("Age Group", fontsize=TICK_SIZE, fontweight='bold')
+    ax.set_ylabel("Average Risk Level", fontsize=TICK_SIZE, fontweight='bold')
+    plt.xticks(rotation=25, fontweight=TICK_WEIGHT)
+    plt.yticks(fontweight=TICK_WEIGHT)
+    plt.tight_layout()
+    plt.close()
+    return fig

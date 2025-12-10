@@ -287,12 +287,12 @@ render_plot_item(
     "Monika", df, "monika_1"
 )
 
-render_plot_item(
-    "Violations by Location (%)", 
-    "This pie chart illustrates the percentage distribution of violations across different locations. It provides a visual breakdown of how violations are spread geographically.",
-    visualize_plot.plot_violation_by_location_pie,
-    "Harika", df, "harika_2"
-)
+# render_plot_item(
+#     "Violations by Location (%)", 
+#     "This pie chart illustrates the percentage distribution of violations across different locations. It provides a visual breakdown of how violations are spread geographically.",
+#     visualize_plot.plot_violation_by_location_pie,
+#     "Harika", df, "harika_2"
+# )
 
 
 
@@ -310,18 +310,21 @@ render_plot_item(
 )
 
 render_plot_item(
-    "Vehicle Risk Analysis", 
-    "This count plot ranks vehicle types based on their total violation frequency. It clearly highlights which specific vehicle classes are the most prone to violating traffic rules.",
-    visualize_plot.plot_vehicle_risk_countplot,
-    "Sanjana", df, "sanjana_1"
-)
-
-render_plot_item(
-    "Fine Paid vs Vehicle Type", 
+    "Vehicle Type vs Fine Paid", 
     "This pie chart displays the share of total fines contributed by each vehicle type. It helps identify which vehicle categories are responsible for the highest financial penalties.",
     visualize_plot.plot_fine_vs_vehicle_pie,
     "Ishwari", df, "ishwari_1"
 )
+
+# ========================================= Removed Plots ====================================
+
+# render_plot_item(
+#     "Vehicle Risk Analysis", 
+#     "This count plot ranks vehicle types based on their total violation frequency. It clearly highlights which specific vehicle classes are the most prone to violating traffic rules.",
+#     visualize_plot.plot_vehicle_risk_countplot,
+#     "Sanjana", df, "sanjana_1"
+# )
+# ========================================= End of Removed Plots ====================================
 
 # ===========================================================================================
 # 💰 FINES
@@ -329,21 +332,21 @@ render_plot_item(
 st.markdown("---")
 st.markdown('<h2 id="total-fines-per-year" style="text-align: center;">Fines Amounts</h3>', unsafe_allow_html=True)
 
-# ====================== Removed Plots ====================== 
+# =========================================== Removed Plots ======================================= 
 # render_plot_item(
 #     "Fine Amount by Violation Type", 
 #     "This scattered distribution compares the average fine amount associated with different violation types. It quickly identifies which infractions carry the heaviest financial penalties on average.",
 #     visualize_plot.plot_avg_fine_by_violation_type_2,
 #     "Poojitha", df, "poojitha_2"
 # )
-# ====================== Removed Plots ====================== 
 
-render_plot_item(
-    "Fine Amount vs Weather (Violin Plot)", 
-    "This violin plot visualizes the density and distribution of fine amounts across various weather conditions. It reveals if severe weather tends to correlate with higher fine amounts.",
-    visualize_plot.plot_fine_amount_distribution_vs_weather,
-    "Anshu", df, "anshu_1"
-)
+# render_plot_item(
+#     "Fine Amount vs Weather (Violin Plot)", 
+#     "This violin plot visualizes the density and distribution of fine amounts across various weather conditions. It reveals if severe weather tends to correlate with higher fine amounts.",
+#     visualize_plot.plot_fine_amount_distribution_vs_weather,
+#     "Anshu", df, "anshu_1"
+# )
+# ========================================= End of Removed Plots ====================================== 
 
 render_plot_item(
     "Violation Type Percentage", 
@@ -358,22 +361,35 @@ render_plot_item(
 st.markdown("---")
 st.markdown('<h2 id="severity-and-risk-analysis" style="text-align: center;">Risk & Severity Analysis</h3>', unsafe_allow_html=True)
 
-render_plot_item(
-    "Violation Severity Heatmap", 
-    "This heatmap maps the intensity of violation severity scores across locations. Darker/Inense colors indicate zones with more severe or dangerous traffic violations.",
-    visualize_plot.plot_severity_heatmap_by_location,
-    "Mrunalini", df, "mrunalini_1"
-)
-
 # ====================== Removed Plots ====================== 
+# render_plot_item(
+#     "Violation Severity Heatmap", 
+#     "This heatmap maps the intensity of violation severity scores across locations. Darker/Inense colors indicate zones with more severe or dangerous traffic violations.",
+#     visualize_plot.plot_severity_heatmap_by_location,
+#     "Mrunalini", df, "mrunalini_1"
+# )
+
 # render_plot_item(
 #     "Repeat Offenders", 
 #     "This bar chart highlights specific drivers (by Violation ID) who have committed multiple offenses. Identifying these habitual offenders is crucial for stricter corrective measures.",
 #     visualize_plot.plot_repeat_offenders,
 #     "Harika", df, "harika_1"
 # )
-# ====================== Removed Plots ====================== 
 
+# render_plot_item(
+#     "License Validity by Gender", 
+#     "This grouped bar chart compares the count of valid vs. expired licenses broken down by driver gender. It helps detect if a specific demographic has a higher rate of license non-compliance.",
+#     visualize_plot.plot_license_validity_by_gender,
+#     "Anshu", df, "anshu_2"
+# )
+# ======================End of Removed Plots ====================== 
+
+render_plot_item(
+    "Driver Risk by Age Group", 
+    "This plot breaks down the calculated risk level for different driver age groups. It reveals which demographics are statistically more likely to engage in risky driving behaviors.",
+    visualize_plot.plot_driver_risk_by_age,
+    "Saniya", df, "saniya_2"
+)
 
 render_plot_item(
     "Age vs Alcohol Heatmap", 
@@ -381,15 +397,6 @@ render_plot_item(
     visualize_plot.plot_age_alcohol_heatmap,
     "Sanjana", df, "sanjana_2"
 )
-
-# ====================== Removed Plots ====================== 
-# render_plot_item(
-#     "License Validity by Gender", 
-#     "This grouped bar chart compares the count of valid vs. expired licenses broken down by driver gender. It helps detect if a specific demographic has a higher rate of license non-compliance.",
-#     visualize_plot.plot_license_validity_by_gender,
-#     "Anshu", df, "anshu_2"
-# )
-# ====================== Removed Plots ====================== 
 
 # ===========================================================================================
 # 🌍 ENVIRONMENTAL & ROAD IMPACT
@@ -404,12 +411,6 @@ render_plot_item(
     "Darsana", df, "darsana_1"
 )
 
-render_plot_item(
-    "Fines vs Weather (Severity)", 
-    "This chart analyzes the relationship between weather conditions and the average fine amount. It helps determine if adverse weather conditions lead to more severe (and expensive) penalties.",
-    visualize_plot.plot_fines_vs_weather_severity,
-    "Darsana", df, "darsana_2"
-)
 
 render_plot_item(
     "Speed Exceeded vs Weather", 
@@ -417,36 +418,38 @@ render_plot_item(
     visualize_plot.plot_speed_exceeded_vs_weather_2,
     "Poojitha", df, "poojitha_1"
 )
+# ========================== Removed Plots ===================================================
 
-render_plot_item(
-    "Violation by Road Condition", 
-    "This pie chart shows the percentage of violations occurring on different road surfaces. It indicates if poor or specific road conditions contribute significantly to traffic counts.",
-    visualize_plot.plot_violation_by_road_condition,
-    "Rakshitha", df, "rakshitha_2"
-)
+# render_plot_item(
+#     "Fines vs Weather (Severity)", 
+#     "This chart analyzes the relationship between weather conditions and the average fine amount. It helps determine if adverse weather conditions lead to more severe (and expensive) penalties.",
+#     visualize_plot.plot_fines_vs_weather_severity,
+#     "Darsana", df, "darsana_2"
+# )
 
-# ====================== Removed Plots ====================== 
+
+# render_plot_item(
+#     "Violation by Road Condition", 
+#     "This pie chart shows the percentage of violations occurring on different road surfaces. It indicates if poor or specific road conditions contribute significantly to traffic counts.",
+#     visualize_plot.plot_violation_by_road_condition,
+#     "Rakshitha", df, "rakshitha_2"
+# )
+
 # render_plot_item(
 #     "Weather Impact Heatmap", 
 #     "This heatmap displays the frequency of specific violation types under different weather conditions. It reveals patterns like 'Are accidents more common in rain?' or 'Do signal violations happen in fog?'.",
 #     visualize_plot.plot_weather_impact_heatmap,
 #     "Saniya", df, "saniya_1"
 # )
-# ====================== Removed Plots ====================== 
 
-render_plot_item(
-    "Violation Types vs Weather (Heatmap)", 
-    "This correlation matrix shows the relationship between violation types and weather conditions. Intensity indicates a strong link between a specific weather type and a specific violation.",
-    visualize_plot.plot_violation_types_vs_weather_heatmap,
-    "Anshu", df, "anshu_3"
-)
+# render_plot_item(
+#     "Violation Types vs Weather (Heatmap)", 
+#     "This correlation matrix shows the relationship between violation types and weather conditions. Intensity indicates a strong link between a specific weather type and a specific violation.",
+#     visualize_plot.plot_violation_types_vs_weather_heatmap,
+#     "Anshu", df, "anshu_3"
+# )
 
-
-
-
-
-
-
+# =========================== End Removed Plots ======================================== 
 
 
 # ==========================================================================================================    
@@ -528,117 +531,123 @@ with st.expander("Custom Bar/Count Plot", expanded=True):
                     else:
                         st.dataframe(plot_df_bar.groupby(x_col_bar)[y_col_bar].mean())
 
+# ====================================== Removed Plots =======================================================
+
 # ------------------------------
 # CORRELATION ANALYSIS
 # ------------------------------
-st.markdown("---")
-st.markdown("### Custom Correlation Analysis Heatmap Plot")
+# st.markdown("---")
+# st.markdown("### Custom Correlation Analysis Heatmap Plot")
 
-with st.expander("Custom Correlation Analysis Heatmap Plot", expanded=True):    
-    with st.form(key="corr_plot_form"):
-        # --- Date Range Selector ---
-        corr_start_date, corr_end_date = None, None
-        plot_df_corr = df.copy()
+# with st.expander("Custom Correlation Analysis Heatmap Plot", expanded=True):    
+#     with st.form(key="corr_plot_form"):
+#         # --- Date Range Selector ---
+#         corr_start_date, corr_end_date = None, None
+#         plot_df_corr = df.copy()
         
-        date_filter_applied = False
+#         date_filter_applied = False
         
-        try:
-            if 'Date' in df.columns:
-                plot_df_corr['Date'] = pd.to_datetime(plot_df_corr['Date'], errors='coerce')
-                plot_df_corr.dropna(subset=['Date'], inplace=True)
-                if not plot_df_corr['Date'].empty:
-                    min_date_corr = plot_df_corr['Date'].min().date()
-                    max_date_corr = plot_df_corr['Date'].max().date()
+#         try:
+#             if 'Date' in df.columns:
+#                 plot_df_corr['Date'] = pd.to_datetime(plot_df_corr['Date'], errors='coerce')
+#                 plot_df_corr.dropna(subset=['Date'], inplace=True)
+#                 if not plot_df_corr['Date'].empty:
+#                     min_date_corr = plot_df_corr['Date'].min().date()
+#                     max_date_corr = plot_df_corr['Date'].max().date()
                     
-                    c1, c2 = st.columns(2)
-                    with c1:
-                        corr_start_date = st.date_input("Start date", min_date_corr, min_value=min_date_corr, max_value=max_date_corr, key="corr_start")
-                    with c2:
-                        corr_end_date = st.date_input("End date", max_date_corr, min_value=min_date_corr, max_value=max_date_corr, key="corr_end")
-                    date_filter_applied = True
-                else:
-                    st.info("No valid dates found in 'Date' column. Showing correlation for entire dataset.")
-            else:
-                st.info("No 'Date' column found. Showing correlation for entire dataset.")
-        except Exception as e:
-            st.error(f"Error processing 'Date' column for Correlation Plot: {e}")
+#                     c1, c2 = st.columns(2)
+#                     with c1:
+#                         corr_start_date = st.date_input("Start date", min_date_corr, min_value=min_date_corr, max_value=max_date_corr, key="corr_start")
+#                     with c2:
+#                         corr_end_date = st.date_input("End date", max_date_corr, min_value=min_date_corr, max_value=max_date_corr, key="corr_end")
+#                     date_filter_applied = True
+#                 else:
+#                     st.info("No valid dates found in 'Date' column. Showing correlation for entire dataset.")
+#             else:
+#                 st.info("No 'Date' column found. Showing correlation for entire dataset.")
+#         except Exception as e:
+#             st.error(f"Error processing 'Date' column for Correlation Plot: {e}")
 
-        submit_corr = st.form_submit_button("Generate Correlation Heatmap")
+#         submit_corr = st.form_submit_button("Generate Correlation Heatmap")
 
-    # Generate Button Interaction
-    if submit_corr:
-        # Filter by date if applicable
-        if date_filter_applied and corr_start_date and corr_end_date:
-             if corr_start_date > corr_end_date:
-                st.error("Error: End date must fall after start date.")
-                st.stop()
-             plot_df_corr = plot_df_corr[(plot_df_corr['Date'].dt.date >= corr_start_date) & (plot_df_corr['Date'].dt.date <= corr_end_date)]
+#     # Generate Button Interaction
+#     if submit_corr:
+#         # Filter by date if applicable
+#         if date_filter_applied and corr_start_date and corr_end_date:
+#              if corr_start_date > corr_end_date:
+#                 st.error("Error: End date must fall after start date.")
+#                 st.stop()
+#              plot_df_corr = plot_df_corr[(plot_df_corr['Date'].dt.date >= corr_start_date) & (plot_df_corr['Date'].dt.date <= corr_end_date)]
         
-        if plot_df_corr.empty:
-            st.warning("No data available for the selected criteria.")
-        else:
-            # Select only numerical columns for correlation matrix
-            numerical_cols = plot_df_corr.select_dtypes(include=['float64', 'int64']).columns
-            if len(numerical_cols) < 2:
-                st.warning("Not enough numerical columns to generate a correlation matrix.")
-            else:
-                try:
-                    fig = visualize_plot.plot_correlation_heatmap(plot_df_corr, numerical_cols)
-                    st.markdown(f"#### Correlation Heatmap (Columns: `{', '.join(numerical_cols)}`)")
-                    st.pyplot(fig, width='stretch')
-                except Exception as e:
-                    st.error(f"An error occurred while generating the heatmap: {e}")
+#         if plot_df_corr.empty:
+#             st.warning("No data available for the selected criteria.")
+#         else:
+#             # Select only numerical columns for correlation matrix
+#             numerical_cols = plot_df_corr.select_dtypes(include=['float64', 'int64']).columns
+#             if len(numerical_cols) < 2:
+#                 st.warning("Not enough numerical columns to generate a correlation matrix.")
+#             else:
+#                 try:
+#                     fig = visualize_plot.plot_correlation_heatmap(plot_df_corr, numerical_cols)
+#                     st.markdown(f"#### Correlation Heatmap (Columns: `{', '.join(numerical_cols)}`)")
+#                     st.pyplot(fig, width='stretch')
+#                 except Exception as e:
+#                     st.error(f"An error occurred while generating the heatmap: {e}")
 
-# ------------------------------
-# PAIR PLOT SECTION
-# ------------------------------
-st.markdown("---")
-st.markdown("### Custom Pair Plot Analysis")
+# # ------------------------------
+# # PAIR PLOT SECTION
+# # ------------------------------
+# st.markdown("---")
+# st.markdown("### Custom Pair Plot Analysis")
 
-with st.expander("Pair Plot Analysis", expanded=True):
-    with st.form(key="pair_plot_form"):
-        # Get numerical and a few categorical columns for selection
-        numerical_cols = df.select_dtypes(include=['float64', 'int64']).columns.tolist()
-        categorical_cols = [col for col in df.columns if df[col].dtype == 'object' and df[col].nunique() < 10]
-        selectable_cols = numerical_cols + categorical_cols
+# with st.expander("Pair Plot Analysis", expanded=True):
+#     with st.form(key="pair_plot_form"):
+#         # Get numerical and a few categorical columns for selection
+#         numerical_cols = df.select_dtypes(include=['float64', 'int64']).columns.tolist()
+#         categorical_cols = [col for col in df.columns if df[col].dtype == 'object' and df[col].nunique() < 10]
+#         selectable_cols = numerical_cols + categorical_cols
 
-        # --- Set new defaults as requested by the user ---
-        # Default columns for the pair plot
-        user_default_cols = ['Fine_Amount','Vehicle_Model_Year','Speed_Limit','Recorded_Speed','Alcohol_Level','Towed_num','Fine_Paid_num','Court_Appearance_num']
-        valid_default_cols = [col for col in user_default_cols if col in selectable_cols]
+#         # --- Set new defaults as requested by the user ---
+#         # Default columns for the pair plot
+#         user_default_cols = ['Fine_Amount','Vehicle_Model_Year','Speed_Limit','Recorded_Speed','Alcohol_Level','Towed_num','Fine_Paid_num','Court_Appearance_num']
+#         valid_default_cols = [col for col in user_default_cols if col in selectable_cols]
 
-        # Default column for the hue
-        user_default_hue = 'Violation_Type'
+#         # Default column for the hue
+#         user_default_hue = 'Violation_Type'
         
-        col1, col2 = st.columns([3, 1])
-        with col1:
-            selected_cols = st.multiselect("Select columns for Pair Plot", options=selectable_cols, default=valid_default_cols)
-        with col2:
-            hue_options = [None] + categorical_cols
-            # Set the default hue if it's a valid option
-            hue_index = 0 # Default to None
-            if user_default_hue in hue_options:
-                hue_index = hue_options.index(user_default_hue)
-            selected_hue = st.selectbox("Select column for color (hue)", options=hue_options, index=hue_index)
+#         col1, col2 = st.columns([3, 1])
+#         with col1:
+#             selected_cols = st.multiselect("Select columns for Pair Plot", options=selectable_cols, default=valid_default_cols)
+#         with col2:
+#             hue_options = [None] + categorical_cols
+#             # Set the default hue if it's a valid option
+#             hue_index = 0 # Default to None
+#             if user_default_hue in hue_options:
+#                 hue_index = hue_options.index(user_default_hue)
+#             selected_hue = st.selectbox("Select column for color (hue)", options=hue_options, index=hue_index)
 
-        submit_pair = st.form_submit_button("Generate Pair Plot")
+#         submit_pair = st.form_submit_button("Generate Pair Plot")
 
-    if submit_pair:
-        if not selected_cols:
-            st.error("Please select at least one column to plot.")
-        elif len(selected_cols) > 5:
-            st.warning("Too many columns selected. Please select 5 or fewer for a clearer plot.")
-        else:
-            with st.spinner("Generating Pair Plot... This may take a moment."):
-                try:
-                    # Use a copy of the dataframe for plotting
-                    plot_df = df[selected_cols].copy()
-                    if selected_hue:
-                        plot_df[selected_hue] = df[selected_hue]
+#     if submit_pair:
+#         if not selected_cols:
+#             st.error("Please select at least one column to plot.")
+#         elif len(selected_cols) > 5:
+#             st.warning("Too many columns selected. Please select 5 or fewer for a clearer plot.")
+#         else:
+#             with st.spinner("Generating Pair Plot... This may take a moment."):
+#                 try:
+#                     # Use a copy of the dataframe for plotting
+#                     plot_df = df[selected_cols].copy()
+#                     if selected_hue:
+#                         plot_df[selected_hue] = df[selected_hue]
 
-                    # Note: sns.pairplot is figure-level, returns PairGrid
-                    pair_plot_fig = sns.pairplot(plot_df, hue=selected_hue, corner=True, diag_kind='kde')
-                    st.pyplot(pair_plot_fig, width='stretch')
-                except Exception as e:
-                    st.error(f"An error occurred while generating the pair plot: {e}")
-st.markdown("---")
+#                     # Note: sns.pairplot is figure-level, returns PairGrid
+#                     pair_plot_fig = sns.pairplot(plot_df, hue=selected_hue, corner=True, diag_kind='kde')
+#                     st.pyplot(pair_plot_fig, width='stretch')
+#                 except Exception as e:
+#                     st.error(f"An error occurred while generating the pair plot: {e}")
+# st.markdown("---")
+
+
+
+# ================================================= Removed Plots ============================================================
